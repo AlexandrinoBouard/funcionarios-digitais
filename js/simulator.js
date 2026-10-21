@@ -102,7 +102,7 @@ class WhatsAppSimulator {
     // Atualiza cabeçalho do WhatsApp
     this.headerAvatar.src = data.avatar;
     this.headerName.innerText = data.botName;
-    this.headerStatus.innerText = data.headerStatus;
+    this.headerStatus.innerText = "demonstração interativa";
 
     // Limpa a tela
     this.chatBody.innerHTML = "";
@@ -153,7 +153,7 @@ class WhatsAppSimulator {
     div.className = "flex justify-center my-3";
     div.innerHTML = `
       <div class="bg-[#ffeecd] text-[#54656f] text-[11px] font-medium py-1.5 px-3 rounded-lg shadow-sm max-w-[90%] text-center leading-relaxed">
-        🔒 As mensagens e chamadas são protegidas com a criptografia de ponta a ponta. Atendimento automatizado por Funcionário Digital 24h.
+        Demonstração interativa: nenhuma mensagem é enviada ao WhatsApp e não há conexão com uma agenda ou pagamento real.
       </div>
     `;
     this.chatBody.appendChild(div);
@@ -182,7 +182,7 @@ class WhatsAppSimulator {
     const el = document.getElementById("typing-bubble");
     if (el) el.remove();
     if (this.currentNiche) {
-      this.headerStatus.innerText = this.currentNiche.headerStatus;
+      this.headerStatus.innerText = "demonstração interativa";
       this.headerStatus.classList.remove("text-[#00a884]", "font-semibold");
     }
   }
@@ -325,7 +325,7 @@ class WhatsAppSimulator {
           { text: "📅 Quero agendar agora", next: Object.keys(this.currentNiche.flows)[0] }
         ]);
       } else {
-        this.appendBotMessage(`Entendi perfeitamente! Como nosso atendimento é 100% integrado ao sistema da ${this.currentNiche.name}, posso agilizar isso para você agora mesmo. Selecione a melhor opção abaixo:`);
+        this.appendBotMessage(`Entendi! Este fluxo é um exemplo de atendimento para ${this.currentNiche.name}. Selecione uma opção para continuar a demonstração:`);
         const firstFlow = Object.keys(this.currentNiche.flows)[0];
         if (firstFlow && this.currentNiche.flows[firstFlow].botMessages[0].quickReplies) {
           this.renderQuickReplies(this.currentNiche.flows[firstFlow].botMessages[0].quickReplies);
@@ -344,59 +344,25 @@ class WhatsAppSimulator {
     setTimeout(() => {
       this.hideTypingIndicator();
 
-      const chaveFake = `00020126580014br.gov.bcb.pix0136${Math.random().toString(36).substring(2, 15)}520400005303986540${valor}.005802BR5925${encodeURIComponent(this.currentNiche.businessName.substring(0, 15))}6009CURITIBA62070503***6304`;
-
       const pixDiv = document.createElement("div");
       pixDiv.className = "flex items-start mb-3 msg-animate w-full";
       pixDiv.innerHTML = `
         <div class="bubble-in p-3.5 max-w-[95%] md:max-w-[85%] text-[#111b21] text-[13px] border border-emerald-300 shadow-md rounded-xl">
-          <div class="flex items-center justify-between pb-2 mb-2 border-b border-emerald-100">
-            <div class="flex items-center gap-2">
-              <span class="p-1.5 bg-emerald-100 text-emerald-700 rounded-lg">
-                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg>
-              </span>
-              <span class="font-bold text-emerald-900 text-sm">Cobrança Pix Dinâmica</span>
-            </div>
-            <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-0.5 rounded-full">Expira em 15min</span>
+          <div class="pb-2 mb-2 border-b border-emerald-100">
+            <span class="font-bold text-emerald-900 text-sm">Demonstração de pagamento</span>
           </div>
 
           <div class="text-xs text-gray-600 mb-2">
-            Favorecido: <strong class="text-gray-900">${this.currentNiche.businessName}</strong><br>
-            Valor a Pagar: <strong class="text-emerald-700 text-base">R$ ${valor},00</strong>
+            Valor ilustrativo: <strong class="text-emerald-700 text-base">R$ ${valor},00</strong>
           </div>
 
-          <!-- QR Code Simulado SVG -->
-          <div class="bg-white p-3 rounded-lg border border-gray-200 flex flex-col items-center justify-center my-2 shadow-inner">
-            <svg class="w-36 h-36" viewBox="0 0 100 100" fill="black">
-              <!-- Padrão gráfico fiel de QR Code -->
-              <rect width="100" height="100" fill="white"/>
-              <path d="M10 10h24v24h-24z M14 14h16v16h-16z M18 18h8v8h-8z M66 10h24v24h-24z M70 14h16v16h-16z M74 18h8v8h-8z M10 66h24v24h-24z M14 70h16v16h-16z M18 74h8v8h-8z"/>
-              <rect x="42" y="10" width="8" height="16" fill="black"/>
-              <rect x="54" y="18" width="6" height="8" fill="black"/>
-              <rect x="42" y="42" width="16" height="16" fill="#00a884"/>
-              <rect x="10" y="42" width="12" height="6" fill="black"/>
-              <rect x="28" y="48" width="6" height="12" fill="black"/>
-              <rect x="66" y="42" width="12" height="10" fill="black"/>
-              <rect x="84" y="56" width="6" height="12" fill="black"/>
-              <rect x="42" y="66" width="10" height="8" fill="black"/>
-              <rect x="58" y="70" width="12" height="12" fill="black"/>
-              <rect x="76" y="76" width="14" height="14" fill="black"/>
-            </svg>
-            <span class="text-[10px] text-gray-500 mt-1 font-mono">Aponte a câmera do seu banco</span>
+          <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 my-2 text-xs text-amber-900">
+            Esta é apenas uma simulação: não há QR Code, código Pix ou cobrança real.
           </div>
 
-          <!-- Campo Copia e Cola -->
-          <div class="flex items-center gap-1.5 my-2">
-            <input type="text" readonly value="${chaveFake}" class="bg-gray-100 text-[11px] text-gray-700 px-2.5 py-1.5 rounded border border-gray-300 w-full font-mono overflow-hidden text-ellipsis select-all">
-            <button onclick="navigator.clipboard.writeText('${chaveFake}'); alert('Código Pix Copia e Cola copiado com sucesso!');" class="bg-gray-200 hover:bg-gray-300 text-gray-800 text-xs px-2.5 py-1.5 rounded font-semibold whitespace-nowrap active:scale-95 transition">
-              Copiar
-            </button>
-          </div>
-
-          <!-- Botão Simular Pagamento -->
           <button id="btn-simulate-pix-${Date.now()}" class="w-full mt-2.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center gap-2 shadow-md btn-pulse-green transition active:scale-95">
             <svg class="w-4 h-4 text-emerald-200" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
-            <span>👉 Simular Pagamento no Celular (R$ ${valor},00)</span>
+            <span>Simular confirmação (não realiza pagamento)</span>
           </button>
         </div>
       `;
@@ -411,28 +377,24 @@ class WhatsAppSimulator {
         simulateBtn.disabled = true;
         simulateBtn.innerHTML = `
           <svg class="animate-spin h-4 w-4 text-white" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path></svg>
-          <span>Confirmando com o Banco Central...</span>
+          <span>Executando simulação...</span>
         `;
         
         setTimeout(() => {
           simulateBtn.classList.remove("btn-pulse-green", "from-emerald-600", "to-teal-600");
           simulateBtn.classList.add("bg-emerald-700", "cursor-default");
-          simulateBtn.innerHTML = `✅ Pagamento Liquidado com Sucesso!`;
+          simulateBtn.innerHTML = `✅ Simulação concluída (sem cobrança)`;
 
-          this.playCashSound();
-
-          // Bot envia confirmação formal
           setTimeout(() => {
-            this.appendBotMessage(`🎉 **PAGAMENTO CONFIRMADO!**\n\nRecebemos a confirmação de **R$ ${valor},00** via Pix instantâneo.\n\n📅 **Agendamento Confirmado**: Seu horário está 100% garantido no sistema.\n📍 **Endereço**: Notificação e comprovante foram despachados para o seu WhatsApp.`);
+            this.appendBotMessage(`Esta demonstração não realizou pagamento nem confirmou um agendamento. Em uma implantação, essas confirmações dependem das integrações configuradas.`);
             this.playPopSound();
 
-            // Atualiza o Backoffice em tempo real!
             if (window.backofficeManager) {
               window.backofficeManager.registerNewEntry({
                 niche: this.currentNiche,
                 valor: valor,
-                servico: this.lastSelectedMeta || "Agendamento Confirmado",
-                metodo: "Pix Instantâneo"
+                servico: this.lastSelectedMeta || "Evento demonstrativo",
+                metodo: "Simulação (sem pagamento)"
               });
             }
           }, 800);
@@ -452,22 +414,21 @@ class WhatsAppSimulator {
 
     confirmBtn.onclick = () => {
       confirmBtn.disabled = true;
-      confirmBtn.innerHTML = `Processando com Adquirente...`;
+      confirmBtn.innerHTML = `Executando simulação...`;
 
       setTimeout(() => {
         modal.classList.add("hidden");
         confirmBtn.disabled = false;
-        confirmBtn.innerHTML = `Pagar com Cartão de Crédito`;
+        confirmBtn.innerHTML = `Simular confirmação`;
 
-        this.playCashSound();
-        this.appendBotMessage(`💳 **TRANSAÇÃO APROVADA NO CARTÃO!**\n\nCobrança de **R$ ${valor},00** autorizada pela operadora.\n\n✅ Horário e reserva validados com sucesso no sistema da ${this.currentNiche.businessName}!`);
+        this.appendBotMessage(`Esta demonstração não realizou cobrança nem confirmou um agendamento. Em uma implantação, essas confirmações dependem das integrações configuradas.`);
         
         if (window.backofficeManager) {
           window.backofficeManager.registerNewEntry({
             niche: this.currentNiche,
             valor: valor,
-            servico: this.lastSelectedMeta || "Agendamento Confirmado",
-            metodo: "Cartão de Crédito (Autorizado)"
+            servico: this.lastSelectedMeta || "Evento demonstrativo",
+            metodo: "Simulação (sem pagamento)"
           });
         }
       }, 1200);

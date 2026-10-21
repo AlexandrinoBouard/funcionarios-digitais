@@ -29,7 +29,7 @@ class BackofficeManager {
     const statConfig = [
       { label: "Atendimentos Hoje", value: stats.totalHoje, icon: "📊", color: "from-blue-500 to-indigo-600" },
       { label: "Receita em Sinais/Vendas", value: stats.sinaisRecebidos || stats.faturamentoDelivery || stats.faturamentoHoje || "R$ 850,00", icon: "💰", color: "from-emerald-500 to-teal-600" },
-      { label: "Faltas Evitadas / Conversão", value: stats.faltasEvitadas || stats.taxaTaxiDog || "94%", icon: "🛡️", color: "from-purple-500 to-pink-600" },
+      { label: "Indicador demonstrativo", value: stats.faltasEvitadas || stats.taxaTaxiDog || "Exemplo", icon: "🛡️", color: "from-purple-500 to-pink-600" },
       { label: "Tempo Médio Resposta", value: stats.tempoResposta || "1.8s", icon: "⚡", color: "from-amber-500 to-orange-600" }
     ];
 
@@ -67,7 +67,7 @@ class BackofficeManager {
                  niche.id === "advocacia" ? "Consulta Inicial Trabalhista (Horas Extras)" :
                  niche.id === "pizzaria" ? "Pizza 1/2 Parma 1/2 4Queijos + Borda" : "Atendimento Confirmado",
         valor: niche.id === "advocacia" ? "R$ 250,00" : "R$ 50,00",
-        status: "Confirmado via Pix",
+        status: "Exemplo demonstrativo",
         hora: "Há 12 min"
       },
       {
@@ -78,7 +78,7 @@ class BackofficeManager {
                  niche.id === "estetica" ? "Sessão Botox Facial - Dra. Paula" :
                  niche.id === "mecanica" ? "Troca de Óleo Sintético + Filtros" : "Serviço Agendado",
         valor: "R$ 60,00",
-        status: "Sinal Pago",
+        status: "Exemplo demonstrativo",
         hora: "Há 34 min"
       },
       {
@@ -88,7 +88,7 @@ class BackofficeManager {
         detalhe: niche.id === "petshop" ? "Banho & Tosa Porte Médio + Táxi Dog" :
                  niche.id === "hamburgueria" ? "Combo Smash Bacon Duplo + Batata" : "Agendamento Efetuado",
         valor: "R$ 85,00",
-        status: "Liquidado",
+        status: "Exemplo demonstrativo",
         hora: "Há 1h"
       }
     ];
@@ -128,9 +128,9 @@ class BackofficeManager {
       <div class="px-4 py-3 bg-slate-50 border-b border-gray-200 flex items-center justify-between">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-          <span class="font-bold text-xs text-slate-800 uppercase tracking-wider">Feed ao Vivo de Operações</span>
+          <span class="font-bold text-xs text-slate-800 uppercase tracking-wider">Feed demonstrativo</span>
         </div>
-        <span class="text-[11px] text-slate-500 font-medium">Sincronizado com WhatsApp 24h</span>
+        <span class="text-[11px] text-slate-500 font-medium">Dados fictícios; sem conexão externa</span>
       </div>
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse">
@@ -155,12 +155,12 @@ class BackofficeManager {
   registerNewEntry(data) {
     const newEntry = {
       id: `BK-${Math.floor(110 + Math.random() * 890)}`,
-      cliente: "Você (Teste em Tempo Real)",
-      contato: "(Seu Navegador)",
+      cliente: "Visitante (demonstração)",
+      contato: "(sem conexão externa)",
       detalhe: data.servico,
-      valor: `R$ ${data.valor},00`,
-      status: `Confirmado (${data.metodo})`,
-      hora: "Agora mesmo"
+      valor: `R$ ${data.valor},00 (simulado)`,
+      status: "Simulação — sem cobrança",
+      hora: "Agora"
     };
 
     this.mockEntries.unshift(newEntry);
@@ -186,9 +186,9 @@ class BackofficeManager {
         ✓
       </div>
       <div class="flex-1">
-        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Novo Agendamento Confirmado!</div>
+        <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Interação demonstrativa</div>
         <div class="text-xs text-slate-200 mt-0.5">
-          <strong>${data.niche.botName}</strong> acabou de validar o sinal de <strong>R$ ${data.valor},00</strong> via ${data.metodo}.
+          Este é um registro fictício de <strong>R$ ${data.valor},00</strong>. Nenhum pagamento ou agendamento foi realizado.
         </div>
       </div>
     `;

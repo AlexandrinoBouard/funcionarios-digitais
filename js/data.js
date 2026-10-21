@@ -12,12 +12,12 @@ window.NICHES_DATA = {
     headerStatus: "online • responde em 2 seg",
     heroHeadline: "Triagem automática, agendamento de avaliações e cobrança de sinal no Pix.",
     ticketMedio: "R$ 800 - R$ 15.000 (Implantes/Ortodontia)",
-    dorResolvida: "Reduz o no-show (faltas) de 40% para menos de 5% cobrando sinal de R$ 50.",
+    dorResolvida: "Exemplo de triagem; agendamento e pagamento dependem de integração.",
     backofficeType: "agenda",
     stats: {
       totalHoje: 12,
       sinaisRecebidos: "R$ 600,00",
-      faltasEvitadas: "92%",
+      faltasEvitadas: "Exemplo",
       tempoResposta: "1.8s"
     },
     initialSteps: [
@@ -144,11 +144,11 @@ window.NICHES_DATA = {
         botMessages: [
           { text: "Maravilha! Já reservei o horário provisório no sistema." },
           { 
-            text: "🔒 **Regra de Reserva**: Para garantir que a cadeira e o especialista fiquem 100% reservados para você sem risco de faltas, solicitamos um sinal simbólico de **R$ 50,00** via Pix.",
+            text: "🔒 **Exemplo de política de reserva**: condições de sinal e confirmação precisam ser definidas pela clínica e configuradas no provedor de pagamento.",
             delay: 1000
           },
           { 
-            text: "*(Esse valor é abatido integralmente no dia da sua consulta).* Deseja que eu gere o Pix instantâneo agora?",
+            text: "Esta etapa é apenas ilustrativa; a demonstração não gera cobrança Pix real. Quer visualizar a simulação?",
             quickReplies: [
               { text: "✅ Sim, gerar Chave Pix agora", next: "render_pix", isPixTrigger: true, valor: 50 },
               { text: "💳 Prefiro pagar no Cartão", next: "render_card", isCardTrigger: true, valor: 50 }
@@ -182,12 +182,12 @@ window.NICHES_DATA = {
     headerStatus: "online • responde em 2 seg",
     heroHeadline: "Anamnese rápida, agendamento de sessões e avaliação de procedimentos.",
     ticketMedio: "R$ 600 - R$ 4.500 (Botox/Laser/Harmonização)",
-    dorResolvida: "Captura clientes no Instagram/WhatsApp 24h e fecha avaliação com depósito prévio.",
+    dorResolvida: "Exemplo de atendimento; agenda e pagamentos dependem de integração.",
     backofficeType: "agenda",
     stats: {
       totalHoje: 18,
       sinaisRecebidos: "R$ 1.400,00",
-      faltasEvitadas: "95%",
+      faltasEvitadas: "Exemplo",
       tempoResposta: "2.1s"
     },
     initialSteps: [
@@ -285,7 +285,7 @@ window.NICHES_DATA = {
         botMessages: [
           { text: "Perfeito! Horário pré-reservado no calendário da Dra. Paula." },
           { 
-            text: "Para confirmarmos a agenda da maca e os insumos esterilizados, solicitamos o pagamento do sinal de **R$ 60,00** (que será 100% revertido no seu procedimento).",
+            text: "Em uma implantação, valores e política de sinal devem ser definidos pela clínica. Esta demonstração não processa pagamentos.",
             quickReplies: [
               { text: "✅ Pagar Sinal de R$ 60 via Pix", next: "render_pix", isPixTrigger: true, valor: 60 },
               { text: "💳 Pagar no Cartão de Crédito", next: "render_card", isCardTrigger: true, valor: 60 }
@@ -308,7 +308,7 @@ window.NICHES_DATA = {
     headerStatus: "online • responde em 2 seg",
     heroHeadline: "Qualifica renda, bairro, tipo de imóvel e agenda visitas diretas com o corretor.",
     ticketMedio: "R$ 350.000 - R$ 2.500.000 (Comissões de R$ 15k+)",
-    dorResolvida: "Filtra curiosos e entrega leads 100% prontos para o corretor fechar visita.",
+    dorResolvida: "Exemplo de qualificação inicial de interessados.",
     backofficeType: "crm",
     stats: {
       totalHoje: 24,
@@ -413,7 +413,7 @@ window.NICHES_DATA = {
       },
       investir_fluxo: {
         botMessages: [
-          { text: "Excelente momento para investir! Temos unidades com rentabilidade de aluguel por temporada (Airbnb) superior a 0,85% ao mês líquido." },
+          { text: "Podemos registrar seu perfil de investimento e encaminhar as informações disponíveis para análise com um corretor." },
           { 
             text: "Deseja receber a planilha de projeção de retorno?",
             quickReplies: [
@@ -665,7 +665,7 @@ window.NICHES_DATA = {
       },
       vacinas_info: {
         botMessages: [
-          { text: "Trabalhamos com vacinas importadas Vanguard e Nobivac, garantindo 100% de sorologia e imunidade." },
+          { text: "Nossa equipe pode informar as vacinas disponíveis e orientar sobre o agendamento com o médico-veterinário." },
           { 
             text: "Podemos agendar a aplicação com carimbo na carteirinha digital?",
             quickReplies: [
@@ -782,7 +782,7 @@ window.NICHES_DATA = {
       },
       ar_fluxo: {
         botMessages: [
-          { text: "Nosso combo inclui troca do filtro de cabine antipólen + oxi-sanitização com gerador de ozônio que elimina 99% de fungos e bactérias." },
+          { text: "Podemos encaminhar os detalhes dos serviços de higienização disponíveis para avaliação da equipe." },
           { 
             text: "Valor promocional de **R$ 149,00**. Deseja reservar seu horário?",
             quickReplies: [
@@ -831,7 +831,7 @@ window.NICHES_DATA = {
     headerStatus: "online • responde em 2 seg",
     heroHeadline: "Montagem de pizzas meio a meio, bordas recheadas, delivery e mesas.",
     ticketMedio: "R$ 75 - R$ 160",
-    dorResolvida: "Atende 200 clientes simultâneos nas noites de sábado sem deixar ninguém esperando no WhatsApp.",
+    dorResolvida: "Exemplo de fluxo para pedidos e retirada; operação depende de configuração.",
     backofficeType: "kds",
     stats: {
       totalHoje: 48,
@@ -943,7 +943,7 @@ window.NICHES_DATA = {
     headerStatus: "online • responde em 2 seg",
     heroHeadline: "Combos, personalização de lanches, adicionais e agendamento de retirada.",
     ticketMedio: "R$ 45 - R$ 95",
-    dorResolvida: "Aumenta ticket médio em 28% sugerindo bacon extra, batata trufada e milkshake na hora certa.",
+    dorResolvida: "Exemplo de sugestão de adicionais durante um pedido.",
     backofficeType: "kds",
     stats: {
       totalHoje: 62,

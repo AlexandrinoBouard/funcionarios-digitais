@@ -81,20 +81,14 @@ function setupRoiCalculator() {
     const leadsPerDay = parseInt(lostLeadsInput.value, 10) || 3;
     const ticket = parseFloat(avgTicketInput.value) || 250;
 
-    lostLeadsVal.innerText = `${leadsPerDay} clientes/dia`;
+    lostLeadsVal.innerText = `${leadsPerDay} oportunidades/dia`;
     avgTicketVal.innerText = `R$ ${ticket.toLocaleString("pt-BR")}`;
 
-    // Perda mensal estimada considerando 22 dias úteis
-    const monthlyLostRevenue = leadsPerDay * 22 * ticket;
-    // Recuperação de pelo menos 60% desses clientes com atendimento instantâneo 24h
-    const recoveredRevenue = monthlyLostRevenue * 0.60;
-    // Economia de recepcionista física (~R$ 3.200) menos a mensalidade da IA (R$ 597) = R$ 2.603
-    const laborEconomy = 2603;
+    const monthlyOpportunityValue = leadsPerDay * 22 * ticket;
+    const illustrativeRecoveryScenario = monthlyOpportunityValue * 0.60;
 
-    const totalEstimatedGain = recoveredRevenue + laborEconomy;
-
-    monthlyLossEl.innerText = `R$ ${monthlyLostRevenue.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
-    totalGainEl.innerText = `R$ ${totalEstimatedGain.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mês`;
+    monthlyLossEl.innerText = `R$ ${monthlyOpportunityValue.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
+    totalGainEl.innerText = `R$ ${illustrativeRecoveryScenario.toLocaleString("pt-BR", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}/mês`;
   }
 
   if (lostLeadsInput && avgTicketInput) {
